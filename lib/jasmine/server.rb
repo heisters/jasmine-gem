@@ -80,6 +80,8 @@ module Jasmine
         end
       end
 
+      config.rack_app self if config.respond_to?(:rack_app)
+
       map('/run.html')         { run Jasmine::Redirect.new('/') }
       map('/__suite__')        { run Jasmine::FocusedSuite.new(config) }
 
